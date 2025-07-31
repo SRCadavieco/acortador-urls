@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8" />
-    <title>Acortador de URLs</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
-</head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+<x-app-layout>
+
     <div class="bg-white p-8 rounded shadow w-full max-w-md">
         @if(session('success'))
             <div class="mb-4 p-2 bg-green-200 text-green-800 rounded">
@@ -26,5 +20,4 @@
             </div>
         @endauth
     </div>
-</body>
-</html>
+</x-app-layout>
