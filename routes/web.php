@@ -7,10 +7,10 @@ use App\Http\Controllers\Auth\GoogleController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::post('/shorten', [LinkController::class, 'store'])->name('links.store');
-
+Route::get('/mis-links', [LinkController::class, 'index'])->name('links.index');
 
 
 
