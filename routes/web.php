@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LinkController;
+use App\Http\Controllers\Auth\GoogleController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,6 +19,11 @@ Route::get('/{code}', function ($code) {
 
     return redirect($link->original_url);
 });
+
+
+Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.redirect');
+Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
+
 
 // Dashboard solo para usuarios autenticados
 Route::middleware('auth')->group(function () {
