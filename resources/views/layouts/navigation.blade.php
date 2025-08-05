@@ -36,8 +36,11 @@
             </x-slot>
 
             <x-slot name="content">
+              <x-dropdown-link :href="route('links.index')">
+                {{ __('Mis links') }}
+              </x-dropdown-link>
               <x-dropdown-link :href="route('profile.edit')">
-                {{ __('Profile') }}
+                {{ __('Mi perfil') }}
               </x-dropdown-link>
               <!-- Logout -->
               <form method="POST" action="{{ route('logout') }}">
@@ -87,6 +90,9 @@
         @else
           <x-responsive-nav-link :href="route('profile.edit')">
             {{ __('Profile') }}
+          </x-responsive-nav-link>
+          <x-responsive-nav-link :href="route('links.index')">
+            {{ __('Mis links') }}
           </x-responsive-nav-link>
           <form method="POST" action="{{ route('logout') }}">
             @csrf
