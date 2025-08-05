@@ -11,7 +11,17 @@ class LinkController extends Controller
     // Dashboard para usuarios logueados
     public function index()
     {
-        $links = Link::where('user_id', Auth::id())->get();
+        // Eliminar enlaces expirados del usuario
+        Link::where('user_id', Auth::id())
+            ->whereNotNull('expires_at')
+            ->where('expires_at', '<=', now())
+            ->delete();
+        $links = Link::where('user_id', Auth::id())
+            ->where(function($query) {
+                $query->whereNull('expires_at')
+                      ->orWhere('expires_at', '>', now());
+            })
+            ->get();
 
         return view('links.index', compact('links'));
     }
@@ -22,6 +32,7 @@ class LinkController extends Controller
         $request->validate([
             'original_url' => 'required|url',
             'custom_alias' => 'nullable|alpha_dash|unique:links,custom_alias',
+            'expires_at' => 'nullable|date|after:now',
         ]);
 
         $shortCode = $request->custom_alias ?: Str::random(6);
@@ -31,6 +42,7 @@ class LinkController extends Controller
             'shortened_url' => $shortCode,
             'custom_alias' => $request->custom_alias,
             'user_id' => Auth::check() ? Auth::id() : null,
+            'expires_at' => $request->expires_at,
         ];
 
         $link = Link::create($linkData);

@@ -11,6 +11,7 @@
             @csrf
             <input type="url" name="original_url" placeholder="https://example.com" required class="border p-2 w-full mb-4 rounded" />
             <input type="text" name="custom_alias" placeholder="Alias personalizado (opcional)" class="border p-2 w-full mb-4 rounded" />
+           <input type="datetime-local" name="expires_at" placeholder="Expira en (opcional)" class="border p-2 w-full mb-4 rounded" />
             <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Acortar URL</button>
         </form>
 
