@@ -14,10 +14,5 @@
             <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Acortar URL</button>
         </form>
 
-        @auth
-            <div class="mt-6">
-                <a href="{{ route('dashboard') }}" class="text-blue-600 hover:underline">Ver mis enlaces guardados</a>
-            </div>
-        @endauth
     </div>
 </x-app-layout>

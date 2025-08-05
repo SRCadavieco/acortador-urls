@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\Auth;
 class LinkController extends Controller
 {
     // Dashboard para usuarios logueados
-    public function index()
+   /* public function index()
     {
         $links = Link::where('user_id', Auth::id())->get();
 
         return view('links.index', compact('links'));
-    }
+    }*/
 
     // Guardar nuevo enlace
     public function store(Request $request)
