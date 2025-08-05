@@ -11,7 +11,25 @@ Route::get('/', function () {
 
 Route::post('/shorten', [LinkController::class, 'store'])->name('links.store');
 
-// Redirección pública
+
+
+
+Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.redirect');
+Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
+
+Route::get('/test-login', function () {
+    return view('auth.login'); 
+});
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [LinkController::class, 'index'])->name('dashboard');
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
 Route::get('/{code}', function ($code) {
     $link = \App\Models\Link::where('shortened_url', $code)
                 ->orWhere('custom_alias', $code)
@@ -19,18 +37,3 @@ Route::get('/{code}', function ($code) {
 
     return redirect($link->original_url);
 });
-
-
-Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.redirect');
-Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
-
-
-// Dashboard solo para usuarios autenticados
-Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', [LinkController::class, 'index'])->name('dashboard');
-        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-require __DIR__.'/auth.php';
