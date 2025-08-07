@@ -7,6 +7,7 @@
         @if($link->expires_at)
             <p class="text-red-500">Expira: {{ \Carbon\Carbon::parse($link->expires_at)->format('d/m/Y H:i') }}</p>
         @endif
+        <a href="{{ route('links.show', $link->id) }}" class="text-blue-600 hover:underline mt-2 inline-block">Ver estadísticas</a>
     </div>
  
  @endforeach

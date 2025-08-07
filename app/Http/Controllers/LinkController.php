@@ -8,6 +8,14 @@ use Illuminate\Support\Facades\Auth;
 
 class LinkController extends Controller
 {
+    // Mostrar estadísticas de un link
+    public function show($id)
+    {
+        $link = Link::where('id', $id)
+            ->where('user_id', Auth::id())
+            ->firstOrFail();
+        return view('links.show', compact('link'));
+    }
     // Dashboard para usuarios logueados
     public function index()
     {

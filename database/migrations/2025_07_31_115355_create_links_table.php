@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('custom_alias')->nullable()->unique();
         $table->string('password')->nullable();
         $table->timestamp('expires_at')->nullable();
+        $table->unsignedBigInteger('click_count')->default(0);
             $table->timestamps();
         });
     }

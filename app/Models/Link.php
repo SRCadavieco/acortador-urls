@@ -20,6 +20,12 @@ class Link extends Model
         'custom_alias',
         'password',
         'expires_at',
+        'click_count',
+    ];
+
+    protected $casts = [
+        'expires_at' => 'datetime',
+        'click_count' => 'integer',
     ];
 
     // Relación con usuario (opcional)
