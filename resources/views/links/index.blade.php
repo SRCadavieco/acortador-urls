@@ -1,18 +1,18 @@
 <x-app-layout>
  <h1>Mis links</h1>
  @foreach ($links as $link)
-    <div class="bg-white p-4 rounded shadow mb-4">
-        <p class="text-gray-800">Original URL: <a href="{{ $link->original_url }}" class="text-blue-600 hover:underline">{{ $link->original_url }}</a></p>
-        <p class="text-gray-600">Alias: <span class="font-semibold">{{ $link->custom_alias ?? 'N/A' }}</span></p>
-        <p class="text-gray-600">URL acortada: 
-            <a href="{{ url('/' . ($link->custom_alias ?: $link->shortened_url)) }}" target="_blank" class="text-blue-600 hover:underline">
+    <div>
+        <p>Original URL: <a href="{{ $link->original_url }}">{{ $link->original_url }}</a></p>
+        <p>Alias: <span>{{ $link->custom_alias ?? 'N/A' }}</span></p>
+        <p>URL acortada: 
+            <a href="{{ url('/' . ($link->custom_alias ?: $link->shortened_url)) }}" target="_blank">
                 {{ url('/' . ($link->custom_alias ?: $link->shortened_url)) }}
             </a>
         </p>
         @if($link->expires_at)
-            <p class="text-red-500">Expira: {{ \Carbon\Carbon::parse($link->expires_at)->format('d/m/Y H:i') }}</p>
+            <p>Expira: {{ \Carbon\Carbon::parse($link->expires_at)->format('d/m/Y H:i') }}</p>
         @endif
-        <a href="{{ route('links.show', $link->id) }}" class="text-blue-600 hover:underline mt-2 inline-block">Ver estadísticas</a>
+        <a href="{{ route('links.show', $link->id) }}">Ver estadísticas</a>
     </div>
  
  @endforeach
