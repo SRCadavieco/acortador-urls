@@ -11,6 +11,7 @@ Route::get('/', function () {
 
 Route::post('/shorten', [LinkController::class, 'store'])->name('links.store');
 Route::get('/mis-links', [LinkController::class, 'index'])->name('links.index');
+Route::get('/mis-links/{id}', [LinkController::class, 'show'])->name('links.show');
 
 
 
@@ -33,6 +34,6 @@ Route::get('/{code}', function ($code) {
     $link = \App\Models\Link::where('shortened_url', $code)
                 ->orWhere('custom_alias', $code)
                 ->firstOrFail();
-
+    $link->increment('click_count');
     return redirect($link->original_url);
 });
