@@ -21,6 +21,7 @@ class Link extends Model
         'password',
         'expires_at',
         'click_count',
+        'qr_base64',
     ];
 
     protected $casts = [

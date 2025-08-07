@@ -21,6 +21,7 @@ return new class extends Migration
         $table->string('password')->nullable();
         $table->timestamp('expires_at')->nullable();
         $table->unsignedBigInteger('click_count')->default(0);
+        $table->longText('qr_base64')->nullable();
             $table->timestamps();
         });
     }
