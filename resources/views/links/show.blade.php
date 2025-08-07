@@ -13,5 +13,10 @@
             <p class="text-red-500">Expira: {{ $link->expires_at->format('d/m/Y H:i') }}</p>
         @endif
     </div>
+    <form action="{{ route('links.destroy', $link->id) }}" method="POST" class="inline-block mr-4">
+        @csrf
+        @method('DELETE')
+        <button type="submit" onclick="return confirm('¿Seguro que quieres eliminar este enlace?')" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Eliminar enlace</button>
+    </form>
     <a href="{{ route('links.index') }}" class="text-blue-600 hover:underline">&larr; Volver a mis links</a>
 </x-app-layout>

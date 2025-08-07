@@ -8,6 +8,15 @@ use Illuminate\Support\Facades\Auth;
 
 class LinkController extends Controller
 {
+    // Eliminar un link
+    public function destroy($id)
+    {
+        $link = Link::where('id', $id)
+            ->where('user_id', Auth::id())
+            ->firstOrFail();
+        $link->delete();
+        return redirect()->route('links.index')->with('success', 'Enlace eliminado correctamente.');
+    }
     // Mostrar estadísticas de un link
     public function show($id)
     {
