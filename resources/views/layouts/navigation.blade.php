@@ -17,8 +17,8 @@
         <a href="{{ route('login') }}" class="btn-link">Iniciar sesión</a>
         <a href="{{ route('register') }}" class="btn-link">Registrarse</a>
       @else
-        <div class="dropdown">
-          <button class="dropdown-toggle">
+        <div class="dropdown" x-data="{ openDropdown: false }" :class="{ 'open': openDropdown }">
+          <button class="dropdown-toggle" @click="openDropdown = !openDropdown" type="button">
             <span>{{ Auth::user()->name }}</span>
             <svg class="icon-chevron" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" clip-rule="evenodd"
@@ -26,7 +26,7 @@
                     111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
             </svg>
           </button>
-          <div class="dropdown-menu">
+          <div class="dropdown-menu" @click.away="openDropdown = false">
             <a href="{{ route('links.index') }}">Mis links</a>
             <a href="{{ route('profile.edit') }}">Mi perfil</a>
             <form method="POST" action="{{ route('logout') }}">
