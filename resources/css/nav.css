@@ -1,0 +1,165 @@
+/* Navbar base */
+.navbar {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 20px;
+  font-family: sans-serif;
+  position: relative;
+}
+
+/* Contenedor principal */
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo inicio */
+.navbar-logo .home-link {
+  display: flex;
+  align-items: center;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  gap: 8px;
+}
+
+.icon-home {
+  width: 20px;
+  height: 20px;
+  stroke: #333;
+}
+
+/* Links */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-link {
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  padding: 6px 10px;
+}
+
+.btn-link:hover {
+  color: #007bff;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  background: none;
+  border: none;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.icon-chevron {
+  width: 16px;
+  height: 16px;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 120%;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  min-width: 150px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  padding: 5px 0;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 120%;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  min-width: 150px;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
+  display: block;
+}
+
+/* Botón hamburguesa */
+.navbar-toggle {
+  background: none;
+  border: none;
+  display: none;
+  cursor: pointer;
+}
+
+.icon-menu {
+  width: 24px;
+  height: 24px;
+}
+
+/* Responsive menu */
+.navbar-responsive {
+  display: none;
+  flex-direction: column;
+  padding: 10px 20px;
+  background: #f9f9f9;
+}
+
+.navbar-responsive.open {
+  display: flex;
+}
+
+.responsive-username {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.responsive-links a {
+  padding: 5px 0;
+  text-decoration: none;
+  color: #333;
+}
+
+.responsive-links a:hover {
+  color: #007bff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+}
