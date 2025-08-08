@@ -1,0 +1,78 @@
+/* CONTENEDOR PRINCIPAL */
+.mis-links-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 30px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #f0f0f0;
+}
+
+/* TÍTULO */
+.mis-links-container h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #ffffff;
+}
+
+/* TARJETAS DE LINKS */
+.link-card {
+  background-color: #1f1f28;
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  margin-bottom: 20px;
+  transition: transform 0.2s ease;
+}
+
+.link-card:hover {
+  transform: translateY(-2px);
+}
+
+/* INFO DEL LINK */
+.link-card p {
+  margin: 10px 0;
+  font-size: 0.95rem;
+  color: #ddd;
+}
+
+/* ENLACES */
+.link-card a {
+  color: #4ea8de;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.link-card a:hover {
+  color: #82b1ff;
+}
+.link-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+}
+
+.copy-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.copy-btn:hover {
+  background-color: #0056b3;
+}
+
+.truncate-text {
+  display: block;
+  max-width: 400px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

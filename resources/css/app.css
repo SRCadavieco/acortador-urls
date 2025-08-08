@@ -1,6 +1,7 @@
 @import url('nav.css');
 @import url('home.css');
 @import url('stats.css');
+@import url('mis-links.css');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -6,6 +6,7 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
+
 // Dropdown menu click handler
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.dropdown-toggle').forEach(function (toggle) {
